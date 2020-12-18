@@ -1,0 +1,16 @@
+---
+Name: myproject
+---
+SilverStripe\Core\Manifest\ModuleManifest:
+  project: app
+SilverStripe\Control\Director:
+  rules:
+    graphql: '%$SilverStripe\GraphQL\Controller.default'
+SilverStripe\GraphQL\Schema\Schema:
+  schemas:
+    default:
+      src:
+        - app/_graphql
+SilverStripe\Security\Member:
+  extensions:
+    - GenedTest\Models\MemberExtension

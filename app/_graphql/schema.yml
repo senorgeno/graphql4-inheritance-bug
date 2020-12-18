@@ -1,0 +1,38 @@
+config:
+  resolvers:
+    - GenedTest\Resolvers\Resolver
+models:
+  GenedTest\Models\Restaurant:
+    fields:
+      title: true
+    operations:
+      readOne:
+        plugins:
+          readVersion: false
+  GenedTest\Models\City:
+    fields:
+      title: true
+      restaurants: true
+    operations:
+      readOne:
+        plugins:
+          readVersion: false
+          inheritance: false
+  SilverStripe\Security\Member:
+    fields:
+      firstName: true
+      surname: true
+      accountBalances:
+        type: '[AccountBalance]'
+        plugins:
+          paginate:
+            resolver: [GenedTest\Resolvers\Resolver, paginateAccountBalances]
+    operations:
+      readOne:
+        plugins:
+          readVersion: false
+types:
+  AccountBalance:
+    fields:
+      currency: String
+      amount: Int
