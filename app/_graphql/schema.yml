@@ -12,7 +12,11 @@ models:
   GenedTest\Models\City:
     fields:
       title: true
-      restaurants: true
+      restaurants:
+        type: '[Restaurant]'
+        plugins:
+          paginate:
+            resolver: [ GenedTest\Resolvers\Resolver, paginateRestaurants ]
     operations:
       readOne:
         plugins:
