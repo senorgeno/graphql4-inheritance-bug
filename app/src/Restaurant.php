@@ -1,12 +1,9 @@
 <?php
 
 namespace GenedTest\Models;
-use SilverStripe\ORM\DataObject;
-use SilverStripe\Security\Permission;
-use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\TabSet;
 
-class Restaurant extends DataObject
+
+class Restaurant extends \Page
 {
     /**
      * @var array
@@ -43,27 +40,13 @@ class Restaurant extends DataObject
     private static $default_sort = 'ID ASC';
 
     /**
-     * @return FieldList
-     */
-    public function getCMSFields()
-    {
-        $fields = FieldList::create(TabSet::create('Root'));
-        $fields->addFieldsToTab('Root.Main', [
-
-        ]);
-        $this->extend('updateCMSFields', $fields);
-
-        return $fields;
-    }
-
-    /**
      * @param null
      * @param array
      * @return bool
      */
     public function canCreate($member = null, $context = [])
     {
-        return Permission::checkMember($member, 'CMS_ACCESS_CMSMain');
+        return true;
     }
 
     /**
@@ -73,7 +56,7 @@ class Restaurant extends DataObject
      */
     public function canEdit($member = null, $context = [])
     {
-        return Permission::checkMember($member, 'CMS_ACCESS_CMSMain');
+        return true;
     }
 
     /**
@@ -83,7 +66,7 @@ class Restaurant extends DataObject
      */
     public function canDelete($member = null, $context = [])
     {
-        return Permission::checkMember($member, 'CMS_ACCESS_CMSMain');
+        return true;
     }
 
     /**

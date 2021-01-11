@@ -2,19 +2,9 @@
 
 namespace GenedTest\Models;
 
-use SilverStripe\ORM\DataObject;
-use SilverStripe\Security\Permission;
-use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\TabSet;
 
-class City extends DataObject
+class City extends \Page
 {
-    /**
-     * @var array
-     */
-    private static $db = [
-        'Title' => 'Varchar',
-    ];
 
     /**
      * @var array
@@ -50,27 +40,13 @@ class City extends DataObject
 
 
     /**
-     * @return FieldList
-     */
-    public function getCMSFields()
-    {
-        $fields = FieldList::create(TabSet::create('Root'));
-        $fields->addFieldsToTab('Root.Main', [
-
-        ]);
-        $this->extend('updateCMSFields', $fields);
-
-        return $fields;
-    }
-
-    /**
      * @param null
      * @param array
      * @return bool
      */
     public function canCreate($member = null, $context = [])
     {
-        return Permission::checkMember($member, 'CMS_ACCESS_CMSMain');
+        return true;
     }
 
     /**
@@ -80,7 +56,7 @@ class City extends DataObject
      */
     public function canEdit($member = null, $context = [])
     {
-        return Permission::checkMember($member, 'CMS_ACCESS_CMSMain');
+        return true;
     }
 
     /**
@@ -90,7 +66,7 @@ class City extends DataObject
      */
     public function canDelete($member = null, $context = [])
     {
-        return Permission::checkMember($member, 'CMS_ACCESS_CMSMain');
+        return true;
     }
 
     /**
