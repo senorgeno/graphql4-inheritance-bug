@@ -11,6 +11,11 @@ SilverStripe\GraphQL\Schema\Schema:
     default:
       src:
         - app/_graphql
+      config:
+        modelConfig:
+          DataObject:
+            plugins:
+              # inheritance: false
 SilverStripe\Security\Member:
   extensions:
     - GenedTest\Models\MemberExtension
